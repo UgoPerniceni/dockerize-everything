@@ -14,6 +14,13 @@ class Task(models.Model):
     expected_end_date = models.DateTimeField(null=True, blank=True)
     complet_date    = models.DateTimeField(null=True, blank=True)
     status          = models.IntegerField(choices=STATUS_CHOICES, default=1)
+    COLOR_CHOICES = (
+        (0, 'Default'),
+        (1, 'White'),
+        (2, 'Blue'),
+        (3, 'Red'),
+        (4, 'Yellow')
+    )
     color           = models.IntegerField(choices=COLOR_CHOICES, default=1)
 
     def get_absolute_url(self):

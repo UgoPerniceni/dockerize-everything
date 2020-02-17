@@ -7,7 +7,12 @@
 <form action='.' method='POST'>
     {% csrf_token %}
     <h1>Do you want to delete the task "{{ object.title }}"?</h1>
-    <input type='submit' value='Yes'/>
+
+    <button type="button submit" class="btn btn-outline-danger">Yes</button>
+    	<a href='/{{ object.id }}' class="btn btn-outline-primary">Cancel</a>
 </form>
-    <a href='/{{ object.id }}'>Cancel</a>
+
 {% endblock %}
+
+<a type="button" class="btn btn-outline-warning" href="{{ object.id }}/update">Update task</a>
+<a type="button" class="btn btn-outline-danger" href="{{ object.id }}/delete">Delete task</a>
