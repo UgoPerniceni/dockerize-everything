@@ -1,13 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<div class="d-flex justify-content-center">
-		<p>Content</p>
-	</div>
 
+<table class="table table-hover" style="text-align: center;">
+  <caption>List of tasks</caption>
+  <thead>
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Title</th>
+      <th scope="col">Color</th>
+      <th scope="col">Detail</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
 
-    {% for instance in object_list %}
-         <p>{{ instance.id }} - <a href='{{ instance.get_absolute_url }}'>{{ instance.title }}</a></p>
-    {% endfor %}
+  <tbody>
+  {% for instance in object_list %}
+    <tr>
+
+      <th scope="row">{{ instance.id }}</th>
+      <td>{{ instance.title }}</td>
+      <td>{{ instance.color }}</td>
+
+      <td>
+      	<a type="button" class="btn btn-info" href='{{ instance.get_absolute_url }}'>
+      		<i class="fa fa-plus" aria-hidden="true"></i>
+      	</a>
+      </td>
+
+      <td>
+      	<a type="button" class="btn btn-warning" href='{{ instance.id }}/update'>
+      		<i class="fa fa-pencil" aria-hidden="true"></i>
+      	</a>
+      </td>
+
+      <td>
+      	<a type="button" class="btn btn-danger" href='{{ instance.id }}/delete'>
+      		<i class="fa fa-trash-o" aria-hidden="true"></i>
+      	</a>
+      </td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+
+</table>
 
 {% endblock %}

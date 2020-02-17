@@ -4,6 +4,9 @@ from .forms import TaskModelForm
 from .models import Task
 import datetime
 
+from django.views.generic import CreateView
+from .models import Task
+
 # Create your views here.
 
 def home(request):
