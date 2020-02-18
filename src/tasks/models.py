@@ -20,11 +20,13 @@ class Task(models.Model):
     )
     status          = models.IntegerField(choices=STATUS_CHOICES, default=1)
     COLOR_CHOICES = (
-        (0, 'Default'),
-        (1, 'White'),
-        (2, 'Blue'),
-        (3, 'Red'),
-        (4, 'Yellow')
+        (1, 'Default'), #White
+        (2, 'Light'), #Light
+        (3, 'Turquoise'), #Info
+        (4, 'Orange'), #Warning
+        (5, 'Red'), #Danger
+        (6, 'Green'), #Success
+        (7, 'Blue'), #Primary
     )
     color           = models.IntegerField(choices=COLOR_CHOICES, default=1)
 

@@ -2,72 +2,78 @@
 
 {% block content %}
 
-<table class="table table-hover" style="text-align: center;">
-  <caption>List of tasks</caption>
-  <thead>
-    <tr>
-      <th scope="col">Number</th>
-      <th scope="col">Title</th>
-      <th scope="col">Close</th>
-      <th scope="col">Detail</th>
-      <th scope="col">Update</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
+<table id="Table" class="table table-hover display" style="text-align: center;">
+	<caption>List of tasks</caption>
+	<thead>
+		<tr>
+			<th scope="col">Number</th>
+			<th scope="col">Title</th>
+			<th scope="col">Completed</th>
+			<th scope="col">Detail</th>
+			<th scope="col">Update</th>
+			<th scope="col">Delete</th>
+		</tr>
+	</thead>
 
-  <tbody>
-  {% for instance in object_list %}
-    <tr>
+	<tbody>
+		{% for instance in object_list %}
 
-      <th scope="row">{{ instance.id }}</th>
+		<tr>
 
-        {% if instance.color == 0 %}
-      <td class="p-3 mb-2 bg-light text-dark"> {{ instance.title }}</td>
-        {% elif instance.color == 1 %}
-      <td class="p-3 mb-2 bg-white text-dark"> {{ instance.title }}</td>
-        {% elif instance.color == 2 %}
-      <td class="p-3 mb-2 bg-primary text-white"> {{ instance.title }}</td>
-        {% elif instance.color == 3 %}
-      <td class="p-3 mb-2 bg-danger text-white"> {{ instance.title }}</td>
-        {% elif instance.color == 4 %}
-      <td class="p-3 mb-2 bg-warning text-dark"> {{ instance.title }}</td>
-        {% endif %}
+			{% if instance.color == 1 %}
+				<td class="bg-white"> {{ instance.id }}</td>
+			{% elif instance.color == 2 %}
+				<td class="bg-light"> {{ instance.id }}</td>
+			{% elif instance.color == 3 %}
+				<td class="bg-info text-white"> {{ instance.id }}</td>
+			{% elif instance.color == 4 %}
+				<td class="bg-warning text-white"> {{ instance.id }}</td>
+			{% elif instance.color == 5 %}
+				<td class="bg-danger text-white"> {{ instance.id }}</td>
+			{% elif instance.color == 6 %}
+				<td class="bg-success text-white"> {{ instance.id }}</td>
+			{% elif instance.color == 7 %}
+				<td class="bg-primary text-white"> {{ instance.id }}</td>
+			{% endif %}
 
-        {% if instance.status == 1 %}
-          <td>
-            <a type="button" class="btn btn-success" href='{{ instance.get_absolute_url }}/close'>
-                <i class="fa fa-check-square" aria-hidden="true"></i>
-            </a>
-          </td>
-        {% elif instance.status == 2 %}
-          <td>
-            <a class="btn btn-secondary">
-                <i class="fa fa-check-square-o" aria-hidden="true"></i>
-            </a>
-          </td>
-        {% endif %}
-      <td>
-      	<a type="button" class="btn btn-info" href='{{ instance.get_absolute_url }}'>
-      		<i class="fa fa-plus" aria-hidden="true"></i>
-      	</a>
-      </td>
+			<td scope="row">{{ instance.title }}</td>
 
-      <td>
-      	<a type="button" class="btn btn-warning" href='{{ instance.id }}/update'>
-      		<i class="fa fa-pencil" aria-hidden="true"></i>
-      	</a>
-      </td>
+			{% if instance.status == 1 %}
+			<td>
+				<a type="button" class="btn btn-secondary" href='{{ instance.get_absolute_url }}/close'>
+					<i class="fa fa-times " aria-hidden="true"></i>
+				</a>
+			</td>
+			{% elif instance.status == 2 %}
+			<td>
+				<a class="btn btn-secondary disabled">
+					<i class="fa fa-check" aria-hidden="true"></i>
+				</a>
+			</td>
+			{% endif %}
+			<td>
+				<a type="button" class="btn btn-info" href='{{ instance.get_absolute_url }}'>
+					<i class="fa fa-file-text-o" aria-hidden="true"></i>
+				</a>
+			</td>
 
-      <td>
-      	<a type="button" class="btn btn-danger" href='{{ instance.id }}/delete'>
-      		<i class="fa fa-trash-o" aria-hidden="true"></i>
-      	</a>
-      </td>
+			<td>
+				<a type="button" class="btn btn-warning" href='{{ instance.id }}/update'>
+					<i class="fa fa-pencil" aria-hidden="true"></i>
+				</a>
+			</td>
 
-    </tr>
-  {% endfor %}
-  </tbody>
+			<td>
+				<a type="button" class="btn btn-danger" href='{{ instance.id }}/delete'>
+					<i class="fa fa-trash-o" aria-hidden="true"></i>
+				</a>
+			</td>
+
+		</tr>
+		{% endfor %}
+	</tbody>
 
 </table>
+
 
 {% endblock %}
