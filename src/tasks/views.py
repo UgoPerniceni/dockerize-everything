@@ -59,3 +59,16 @@ def task_detail_view(request, id):
 		"object": obj
 	}
 	return render(request, "tasks/task_detail.html", context)
+
+def task_close_view(request, id):
+	obj = get_object_or_404(Task, id=id)
+	if obj.status == 2:
+		return redirect('/')
+	if request.method == "POST":
+		obj.close()
+		obj.save()
+		return redirect('/')
+	context = {
+		"object": obj
+	}
+	return render(request, "tasks/task_close.html", context)
