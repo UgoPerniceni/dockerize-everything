@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+import datetime
 # from .choices import *
 
 # Create your models here.
@@ -31,4 +32,6 @@ class Task(models.Model):
         return reverse("task-detail", kwargs={"id": self.id})
 
     def close(self):
-        self.status = 2
+        if self.status == 1:
+            self.status = 2
+            self.complet_date = datetime.datetime.now()
