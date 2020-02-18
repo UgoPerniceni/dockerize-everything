@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
-from .choices import *
+# from .choices import *
 
 # Create your models here.
 User = settings.AUTH_USER_MODEL
@@ -11,8 +11,12 @@ class Task(models.Model):
     title           = models.CharField(max_length = 120)
     description     = models.TextField(null=True, blank=True)
     creation_date   = models.DateTimeField()
-    expected_end_date = models.DateTimeField(null=True, blank=True)
+    # expected_end_date = models.DateTimeField(null=True, blank=True)
     complet_date    = models.DateTimeField(null=True, blank=True)
+    STATUS_CHOICES = (
+        (1, ("Active")),
+        (2, ("Done"))
+    )
     status          = models.IntegerField(choices=STATUS_CHOICES, default=1)
     COLOR_CHOICES = (
         (0, 'Default'),
@@ -25,3 +29,6 @@ class Task(models.Model):
 
     def get_absolute_url(self):
         return reverse("task-detail", kwargs={"id": self.id})
+
+    def close(self):
+        self.status = 2
