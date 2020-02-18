@@ -3,36 +3,47 @@
 {% block content %}
 
 <div class="card bg-light mb-3">
-
+    <p
         {% if object.color == 0 %}
-      <div class="p-3 mb-2 bg-light text-dark card-header"> {{ object.title }}</div>
+            class="p-3 mb-2 bg-light text-dark card-header"
         {% elif object.color == 1 %}
-      <div class="p-3 mb-2 bg-white text-dark card-header"> {{ object.title }}</div>
+            class="p-3 mb-2 bg-white text-dark card-header"
         {% elif object.color == 2 %}
-      <div class="p-3 mb-2 bg-primary text-white card-header"> {{ object.title }}</div>
+            class="p-3 mb-2 bg-primary text-white card-header"
         {% elif object.color == 3 %}
-      <div class="p-3 mb-2 bg-danger text-white card-header"> {{ object.title }}</div>
+            class="p-3 mb-2 bg-danger text-white card-header"
         {% elif object.color == 4 %}
-      <div class="p-3 mb-2 bg-warning text-dark card-header"> {{ object.title }}</div>
+            class="p-3 mb-2 bg-warning text-dark card-header"
         {% endif %}
+    >
+        {{ object.title }}</p>
 
-  <div class="card-body">
-    {% if object.status == 1 %}
-        <p class="card-title">The task status is active</p>
-    {% elif object.status == 2 %}
-        <h5 class="card-title">The task status is done</h5>
-    {% else %}
-        <h5 class="card-title">The task status is not valid</h5>
-    {% endif %}
-    <p class="card-text">{{ object.description }}</p>
-  </div>
+      <div class="card-body">
+        <p class="card-text">{{ object.description }}</p>
+      </div>
 </div>
 
+  <div class="row">
 
-    {% if object.status == 1 %}
-<a type="button" class="btn btn-outline-success" href="{{ object.id }}/close">Close task</a>
-    {% endif %}
-<a type="button" class="btn btn-outline-primary" href="{{ object.id }}/update">Update task</a>
-<a type="button" class="btn btn-outline-danger" href="{{ object.id }}/delete">Delete task</a>
+    <div class="col-md-6">
+        {% if object.status == 1 %}
+                <a type="button" class="btn btn-outline-success" href="{{ object.id }}/close">Close task</a>
+        {% endif %}
+                <a type="button" class="btn btn-outline-primary" href="{{ object.id }}/update">Update task</a>
+                <a type="button" class="btn btn-outline-danger" href="{{ object.id }}/delete">Delete task</a>
+    </div>
+
+    <div class="offset-md-3 col-md-3">
+
+        {% if object.status == 1 %}
+                <button type="button" class="btn btn btn-primary" disabled>Active</button>
+        {% elif object.status == 2 %}
+                <button type="button" class="btn btn btn-success" disabled>Done</button>
+        {% else %}
+                <button type="button" class="btn btn btn-danger" disabled>Not valid</button>
+        {% endif %}
+    </div>
+
+  </div>
 
 {% endblock %}
