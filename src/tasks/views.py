@@ -55,9 +55,12 @@ def task_delete_view(request, id):
 
 def task_detail_view(request, id):
 	obj = get_object_or_404(Task, id=id)
+
 	context = {
-		"object": obj
+		"object": obj,
+		"color": get_color(obj.color),
 	}
+
 	return render(request, "tasks/task_detail.html", context)
 
 def task_close_view(request, id):
@@ -72,3 +75,15 @@ def task_close_view(request, id):
 		"object": obj
 	}
 	return render(request, "tasks/task_close.html", context)
+
+def get_color(argument): 
+    switcher = { 
+        1: "bg-white", 
+        2: "bg-light", 
+        3: "bg-info text-white", 
+       	4: "bg-warning text-white", 
+        5: "bg-danger text-white", 
+        6: "bg-success text-white", 
+        7: "bg-primary text-white",
+    } 
+    return switcher.get(argument, '') 

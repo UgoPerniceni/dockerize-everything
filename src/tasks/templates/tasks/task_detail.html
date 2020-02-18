@@ -3,20 +3,9 @@
 {% block content %}
 
 <div class="card bg-light mb-3">
-    <p
-        {% if object.color == 0 %}
-            class="p-3 mb-2 bg-light text-dark card-header"
-        {% elif object.color == 1 %}
-            class="p-3 mb-2 bg-white text-dark card-header"
-        {% elif object.color == 2 %}
-            class="p-3 mb-2 bg-primary text-white card-header"
-        {% elif object.color == 3 %}
-            class="p-3 mb-2 bg-danger text-white card-header"
-        {% elif object.color == 4 %}
-            class="p-3 mb-2 bg-warning text-dark card-header"
-        {% endif %}
-    >
-        {{ object.title }}</p>
+    <p class="{{color}} card-header">
+        {{ object.title }}
+    </p>
 
       <div class="card-body">
         <p class="card-text">{{ object.description }}</p>
@@ -33,14 +22,13 @@
                 <a type="button" class="btn btn-outline-danger" href="{{ object.id }}/delete">Delete task</a>
     </div>
 
-    <div class="offset-md-3 col-md-3">
-
+    <div class="col-md-3 offset-md-3">
         {% if object.status == 1 %}
-                <button type="button" class="btn btn btn-primary" disabled>Active</button>
+                <button type="button" class="btn btn btn-primary" style="float:right;" disabled>Active</button>
         {% elif object.status == 2 %}
-                <button type="button" class="btn btn btn-success" disabled>Done</button>
+                <button type="button" class="btn btn btn-success" style="float:right;" disabled>Done</button>
         {% else %}
-                <button type="button" class="btn btn btn-danger" disabled>Not valid</button>
+                <button type="button" class="btn btn btn-danger" style="float:right;" disabled>Not valid</button>
         {% endif %}
     </div>
 
