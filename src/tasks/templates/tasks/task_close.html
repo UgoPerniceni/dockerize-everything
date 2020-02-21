@@ -10,10 +10,15 @@
 
 <form action='.' method='POST'>
     {% csrf_token %}
-    <h4>Do you want to close the task "{{ object.title }}"?</h4>
-
-    <button type="button submit" class="btn btn-outline-danger">Yes</button>
-    	<a href='/' class="btn btn-outline-primary">Cancel</a>
+    <p class="label-form">Do you want to close the task "{{ object.title }}"?</p>
+	<div class="row justify-content-between">
+		<div class="col-1">
+	    <button type="button submit" class="btn btn-outline-danger">Close</button>
+	    </div>
+		<div class="col-1">
+	    	<a href='/' class="btn btn-outline-primary">Cancel</a>
+	    </div>
+	</div>
 </form>
 
 {% endblock %}

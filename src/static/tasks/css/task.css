@@ -1,0 +1,23 @@
+html, body {
+  height: 100%;
+}
+
+.container {
+	margin-bottom: 5%;
+}
+
+.card-header {
+	font-size: 25px;
+}
+
+.card-body {
+	font-size: 18px
+}
+
+.label-form{
+	font-size: 20px;
+}
+
+.admin-button{
+	font-weight: bold;
+}

@@ -7,12 +7,17 @@
     Delete
 {% endblock %}
 
+
 <form action='.' method='POST'>
     {% csrf_token %}
-    <p>Do you want to delete the task "{{ object.title }}"?</p>
-
-    <button type="button submit" class="btn btn-outline-danger">Delete</button>
-    	<a href='/' class="btn btn-outline-primary">Cancel</a>
+    <p class="label-form">Do you want to delete the task "{{ object.title }}"?</p>
+	<div class="row justify-content-between">
+	<div class="col-1">
+		<button type="button submit" class="btn btn-outline-danger">Delete</button>
+	</div>
+	<div class="col-1">
+		<a href='/' class="btn btn-outline-primary">Cancel</a>
+	</div>
 </form>
 
 {% endblock %}
