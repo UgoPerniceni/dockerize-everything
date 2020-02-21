@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Update
+{% endblock %}
+
+
+{% block content %}
+
+<form method='POST'novalidate>
+	{% csrf_token %}
+
+	<div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="title_input">Task Title</label>
+      <input type="text" class="form-control" id="title_input" name="title" placeholder="My new task">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="color_input">Task Color</label>
+      <select class="form-control" name="color" id="color_input">
+        <option value="1">Default</option>
+        <option value="2">Light</option>
+        <option value="3">Turquoise</option>
+        <option value="4">Orange</option>
+        <option value="5">Red</option>
+        <option value="6">Green</option>
+        <option value="7">Blue</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description_input">Task Description</label>
+    <textarea class="form-control" name="description" id="description_input" rows="4"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-success">Save task</button>
+</form>
+
+{% endblock %}

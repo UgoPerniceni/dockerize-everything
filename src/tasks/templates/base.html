@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{% static '/assets/font-awesome-4.7.0/css/font-awesome.min.css' %}">
     
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    
+    <link rel="stylesheet" type="text/css" href="{% static '/tasks/css/task.css' %}">
   
     <title>To do list</title>
   </head>
@@ -32,7 +34,7 @@
 		</div>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item">
-        <a class="nav-link" href="/admin/"><i class="fa fa-lock" aria-hidden="true"></i> Admin</a>
+        <button class="admin-button"><a class="nav-link" href="/admin/"><i class="fa fa-lock" aria-hidden="true"></i> Admin</a></button>
       </li>
     </ul>
 	</nav>
@@ -52,6 +54,8 @@
         </div>
       </div>
     </div>
+
+
 
     <link rel="stylesheet" href="{% static '/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js' %}">
 

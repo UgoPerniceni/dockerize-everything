@@ -41,7 +41,7 @@ def task_update_view(request, id=id):
 	context = {
 		'form': form
 	}
-	return render(request, "tasks/task_create.html", context)
+	return render(request, "tasks/task_update.html", context)
 
 def task_delete_view(request, id):
 	obj = get_object_or_404(Task, id=id)
